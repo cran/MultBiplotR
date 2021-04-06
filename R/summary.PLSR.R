@@ -1,0 +1,27 @@
+summary.PLSR <- function(object, ...){
+  cat(" ###### PLS Regression with Continuous Responses #######\n\n")
+  cat("________________________________________________\n\n")
+  cat("Method\n")
+  print(object$Method)
+  cat("Initial transformation of X : \n")
+  print(object$Initial_Transformation)
+  cat("________________________________________________\n\n")
+  cat("Total R-squared :", object$R2, "\n")
+  cat("________________________________________________\n\n")
+  cat("Correlations of the X variables and the PLS Componentes \n")
+  print(round(object$XStructure, digits=3))
+  cat("Contributions of the the PLS Componentes to the X variables  \n")
+  Contrib=cbind(object$XStructure^2, apply(object$XStructure^2,1,sum))
+  colnames(Contrib)=c(colnames(object$XStructure), "  Total")
+  print(round(Contrib, digits=3))
+  
+  cat("________________________________________________\n\n")
+  cat("Regression parameters \n")
+  print(object$RegParameters)
+  cat("________________________________________________\n\n")
+  cat("Validation type\n")
+  if (is.null(object$Validation))
+    print("None")
+  else
+    print(object$Validation)
+}

@@ -1,0 +1,17 @@
+summary.PLSR1Bin <- function(object, ...){
+  cat(" ###### PLS Regression with Binary Response #######\n\n")
+  cat("________________________________________________\n\n")
+  cat("Method\n")
+  print(object$Method)
+  cat("Initial transformation of X : \n")
+  print(object$Initial_Transformation)
+  cat("Ridge Logistic Regression \n")
+  summary(object$BinaryFit)
+  cat("________________________________________________\n\n")
+  cat("Correlations of the X variables and the PLS Componentes \n")
+  print(round(object$XStructure, digits=3))
+  cat("Contributions of the the PLS Componentes to the X variables  \n")
+  Contrib=cbind(object$XStructure^2, apply(object$XStructure^2,1,sum))
+  colnames(Contrib)=c(colnames(object$XStructure), "  Total")
+  print(round(Contrib, digits=3))
+}
