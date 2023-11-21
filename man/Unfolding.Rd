@@ -64,13 +64,13 @@ Maximum number of iterations in the algorithm
 Tolerace for the algorithm
 }
   \item{lambda}{
-%%     ~~Describe \code{lambda} here~~
+First penalization parameter
 }
   \item{omega}{
-%%     ~~Describe \code{omega} here~~
+Second penalization parameter
 }
   \item{plot}{
-%%     ~~Describe \code{plot} here~~
+Should the results be plotted?
 }
 }
 \details{

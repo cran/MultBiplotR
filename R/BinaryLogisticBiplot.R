@@ -55,6 +55,8 @@ BinaryLogisticBiplot <- function(x, dim = 2, compress = FALSE, init = "mca",
     LogBip = BinaryLogBiplotGD(x, freq, dimens = dim, tolerance = tol, maxiter = maxiter, penalization = penalization, ...)
   },AlternatedGD = {
     LogBip = BinaryLogBiplotGD(x, freq, dimens = dim, tolerance = tol, maxiter = maxiter, penalization = penalization, ...)
+  },Recursive = {
+    LogBip = BinaryLogBiplotGDRecursive(x, freq, dimens = dim, tolerance = tol, maxiter = maxiter, penalization = penalization, ...)
   })
   
   LogBip$Type="Binary Logistic Biplot"

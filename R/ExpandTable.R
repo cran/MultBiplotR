@@ -1,7 +1,8 @@
 # This function expands the patterns of a table of patterns and frequencies
 
 ExpandTable <- function(table){
-  if (!(class(table)=="TableFrequencies")) stop("You must provide a Table with Frequencies to extend")
+  claseT=class(table)
+  if (!(claseT=="TableFrequencies")) stop("You must provide a Table with Frequencies to extend")
   ncomp=dim(table$Patterns)[1]
   p=dim(table$Patterns)[2]
   nexp=sum(table$Frequencies)
@@ -21,7 +22,8 @@ ExpandTable <- function(table){
 
 
 ExpandCoord <- function(Coord, table){
-  if (!(class(table)=="TableFrequencies")) stop("You must provide a Table with Frequencies to extend")
+  claseT=class(table)
+  if (!(claseT=="TableFrequencies")) stop("You must provide a Table with Frequencies to extend")
   ncomp=dim(Coord)[1]
   nexp=sum(table$Frequencies)
   x=matrix(0,nexp, ncomp)

@@ -6,17 +6,17 @@ SeparateVarTypes <- function(X, TypeVar=NULL, TypeFit=NULL){
 
   n=dim(X)[1]
   p=dim(X)[2]
-
+  clases=apply(X, 2, class)
   if (is.null(TypeVar)){
     for (i in 1:p){
-      if (class(X[[i]])=="numeric") TypeVar=c(TypeVar,"c")
+      if (clases[i]=="numeric") TypeVar=c(TypeVar,"c")
       else
-        if (class(X[[i]])=="factor") {
-          if (length(levels(X[[i]]))==2) TypeVar=c(TypeVar,"b")
+        if (clases[i]=="factor") {
+          if (length(levels(X[i]))==2) TypeVar=c(TypeVar,"b")
           else
             TypeVar=c(TypeVar,"n")}
       else 
-        if (class(X[[i]])=="factor") TypeVar=c(TypeVar,"b")
+        if (clases[i]=="factor") TypeVar=c(TypeVar,"b")
     }
   }
   else

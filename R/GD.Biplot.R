@@ -97,7 +97,7 @@ GD.Biplot <- function(X, dimension = 2, Scaling = 5, lambda=0.01, OptimMethod="C
   if (Algorithm == "Alternated"){
     parA=c(c(A))
     parB=c(c(B))
-    resbipB <- optimr(parB, fn=JBiplotRegB, gr=grBiplotRegB, method=OptimMethod, X=X, A=A, lambda=lambda)
+    resbipB <- optim(parB, fn=JBiplotRegB, gr=grBiplotRegB, method=OptimMethod, X=X, A=A, lambda=lambda)
     parB=resbipB$par
     J = sum((X - A %*% t(B))^2, na.rm = TRUE)/2 + lambda*sum(A^2, na.rm = TRUE)/2 + lambda*sum(B^2, na.rm = TRUE)/2
     err=1
@@ -107,14 +107,14 @@ GD.Biplot <- function(X, dimension = 2, Scaling = 5, lambda=0.01, OptimMethod="C
       iter=iter+1
       Jold=J
       #Update A
-      resbipA <- optimr(parA, fn=JBiplotRegA, gr=grBiplotRegA, method=OptimMethod, X=X, B=B, lambda=lambda)
+      resbipA <- optim(parA, fn=JBiplotRegA, gr=grBiplotRegA, method=OptimMethod, X=X, B=B, lambda=lambda)
       parA=resbipA$par
       A=matrix(parA,n,r)
       if (Orthogonalize) {
         A=InitialTransform(A)$X
         A=Orthog(A)}
       #Update B
-      resbipB <- optimr(parB, fn=JBiplotRegB, gr=grBiplotRegB, method=OptimMethod, X=X, A=A, lambda=lambda)
+      resbipB <- optim(parB, fn=JBiplotRegB, gr=grBiplotRegB, method=OptimMethod, X=X, A=A, lambda=lambda)
       parB=resbipB$par
       B=matrix(parB, p, r)
       J = sum((X - A %*% t(B))^2, na.rm = TRUE)/2 + lambda*sum(A^2, na.rm = TRUE)/2 + lambda*sum(B^2, na.rm = TRUE)/2
@@ -125,7 +125,7 @@ GD.Biplot <- function(X, dimension = 2, Scaling = 5, lambda=0.01, OptimMethod="C
   
   if (Algorithm == "Joint"){
     initpar=c(c(A),c(B))
-    resbip <- optimr(initpar, fn=JBiplotReg, gr=grBiplotReg, method=OptimMethod, X=X, r=r, lambda=lambda)
+    resbip <- optim(initpar, fn=JBiplotReg, gr=grBiplotReg, method=OptimMethod, X=X, r=r, lambda=lambda)
     par=resbip$par
     A=matrix(par[1:(n*r)],n,r)
     B=matrix(par[(n*r+1):((n+p)*r)], p, r)
@@ -133,7 +133,7 @@ GD.Biplot <- function(X, dimension = 2, Scaling = 5, lambda=0.01, OptimMethod="C
       # A=InitialTransform(A)$X
       A=Orthog(A)
       parB=c(c(B))
-      resbipB <- optimr(parB, fn=JBiplotRegB, gr=grBiplotRegB, method=OptimMethod, X=X, A=A, lambda=lambda)
+      resbipB <- optim(parB, fn=JBiplotRegB, gr=grBiplotRegB, method=OptimMethod, X=X, A=A, lambda=lambda)
       parB=resbipB$par
       B=matrix(parB, p, r)}
     
@@ -143,7 +143,7 @@ GD.Biplot <- function(X, dimension = 2, Scaling = 5, lambda=0.01, OptimMethod="C
     XR=X
     for (i in 1:r){
       initpar=c(c(A[,i]),c(B[,i]))
-      resbip <- optimr(initpar, fn=JBiplotReg, gr=grBiplotReg, method=OptimMethod, X=XR, r=1, lambda=lambda)
+      resbip <- optim(initpar, fn=JBiplotReg, gr=grBiplotReg, method=OptimMethod, X=XR, r=1, lambda=lambda)
       par=resbip$par
       A1=matrix(par[1:n],n,1)
       B1=matrix(par[(n+1):(n+p)], p, 1)

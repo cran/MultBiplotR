@@ -153,7 +153,7 @@ UnfoldingGD <- function(P, W = matrix(1, dim(P)[1], dim(P)[2]), Constrained = FA
   while ((k <= maxiter) & (errorest > tolerance)) {
     k = k + 1
     initpar=c(c(X0),c(Y0))
-    update <- optimr(initpar, fn=JUnfolding, gr=grUnfolding, method=OptimMethod, D=DH$Dh, r=r) 
+    update <- optim(initpar, fn=JUnfolding, gr=grUnfolding, method=OptimMethod, D=DH$Dh, r=r) 
     par=update$par
     X=matrix(par[1:(n*r)],n,r)
     Y=matrix(par[(n*r+1):((n+m)*r)], m, r)

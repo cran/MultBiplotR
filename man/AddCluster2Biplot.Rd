@@ -8,7 +8,8 @@ Add clusters to a biplot object
 The function add clusters to a biplot object to be represented on the biplot. The clusters can be defined by a nominal variable provided by the user, obtained from the \code{hclust} function of the base package or from the \code{kmeans} function
 }
 \usage{
-AddCluster2Biplot(Bip, NGroups=3, ClusterType="hi", Groups=NULL, Original=FALSE, ...)
+AddCluster2Biplot(Bip, NGroups=3, ClusterType="hi", Groups=NULL, 
+                  Original=FALSE, ClusterColors=NULL, ...)
 }
 %- maybe also 'usage' for other objects documented here.
 \arguments{
@@ -26,6 +27,9 @@ A factor defining the groups provided by the user.
 }
   \item{Original}{
 Should the clusters be calculated using the original data rather than the reduced dimensions?.
+}
+  \item{ClusterColors}{
+Colors for the clusters.
 }
   \item{...}{
 Any other parameter for the \code{hclust} and \code{kmeans} procedures.

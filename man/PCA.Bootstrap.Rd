@@ -30,7 +30,7 @@ Type of Bootstrap ("np", "pa", "spper", "spres")
 }
 \details{
 The types of bootstrap used are:
-   \itemize{
+   \describe{
    \item{"np : "}{Non Parametric}
    \item{"pa : "}{parametric (data is obtained from a Multivariate Normal Distribution)}
    \item{"spper : "}{Semi-parametric Residuals are permutated}

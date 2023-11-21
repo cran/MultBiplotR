@@ -1,5 +1,6 @@
-OrdVarBiplot <- function(bi1, bi2,threshold, xmin = -3, xmax = 3, ymin = -3, ymax = 3, label = "Point", mode = "a", CexMarks=0.7,  CexPoint = 0.8, PchPoint = 1, Color = "green", 
-                           tl = 0.03, textpos=1, ...){
+OrdVarBiplot <- function(bi1, bi2,threshold, xmin = -3, xmax = 3, ymin = -3, ymax = 3, label = "Point", mode = "a",  
+                         CexPoint = 0.8, PchPoint = 1, Color = "green", 
+                           tl = 0.03, textpos=1, CexScale=0.5, ...){
 
   b1 = bi1/(bi1^2 + bi2^2)
   b2 = bi2/(bi1^2 + bi2^2)
@@ -80,7 +81,7 @@ OrdVarBiplot <- function(bi1, bi2,threshold, xmin = -3, xmax = 3, ymin = -3, yma
     for (i in 1:k) {
       if (InBox(M[i, 1], M[i, 2], xmin, xmax, ymin, ymax)) {
         lines(rbind(M[i, 1:2], Mn[i, 1:2]), col = Color, lwd = 1, ...)
-        text(Mn[i, 1], Mn[i, 2], OrCoor$labels[i], pos = 1, offset = 0.2, cex = CexMarks, srt = ang, col = Color, ...)
+        text(Mn[i, 1], Mn[i, 2], OrCoor$labels[i], pos = 1, offset = 0.2, cex = CexScale, srt = ang, col = Color, ...)
       }
     }
     

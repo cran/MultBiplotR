@@ -46,14 +46,14 @@ BinaryLogBiplotGD <- function(X, freq = matrix(1, nrow(X), 1),  dim = 2, toleran
       iter=iter+1
       Jold=J
       #Update A
-      resbipA <- optimr(parA, fn=JLogBiplotRegA, gr=grLogBiplotRegA, method=OptimMethod, X=X, B=B, lambda=penalization)
+      resbipA <- optim(parA, fn=JLogBiplotRegA, gr=grLogBiplotRegA, method=OptimMethod, X=X, B=B, lambda=penalization)
       parA=resbipA$par
       A=matrix(parA,n,r)
       if (Orthogonalize) {
         A=InitialTransform(A)$X
         A=Orthog(A)}
       #Update B
-      resbipB <- optimr(parB, fn=JLogBiplotRegB, gr=grLogBiplotRegB, method=OptimMethod, X=X, A=A, lambda=penalization)
+      resbipB <- optim(parB, fn=JLogBiplotRegB, gr=grLogBiplotRegB, method=OptimMethod, X=X, A=A, lambda=penalization)
       parB=resbipB$par
       B=matrix(parB, p, r+1)
       H=sigmoide(cbind(rep(1,n),A) %*% t(B))

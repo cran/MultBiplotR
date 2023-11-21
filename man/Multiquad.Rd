@@ -13,10 +13,10 @@ Multiquad(nnodes, dims)
 %- maybe also 'usage' for other objects documented here.
 \arguments{
   \item{nnodes}{
-%%     ~~Describe \code{nnodos} here~~
+Number of nodes of the quadrature
 }
   \item{dims}{
-%%     ~~Describe \code{dims} here~~
+Dimension of the solution
 }
 }
 \details{

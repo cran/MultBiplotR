@@ -57,86 +57,86 @@ Should the species be labelled?
 Should the environmental variables be labelled?
 }
   \item{SpeciesQuality}{
-%%     ~~Describe \code{SpeciesQuality} here~~
+Min species quality to plot
 }
   \item{MinQualityVars}{
 Minimum quality of a var to be plotted.
 }
   \item{dp}{
-%%     ~~Describe \code{dp} here~~
+A set of indices with the variables that will show the projections of the individuals.
 }
   \item{PlotAxis}{
-%%     ~~Describe \code{PlotAxis} here~~
+Should the axis be plotted?
 }
   \item{TypeScale}{
-%%     ~~Describe \code{TypeScale} here~~
+Type of scale to use : "Complete", "StdDev" or "BoxPlot"
 }
   \item{ValuesScale}{
-%%     ~~Describe \code{ValuesScale} here~~
+Values to show on the scale: "Original" or "Transformed"
 }
   \item{mode}{
-%%     ~~Describe \code{mode} here~~
+Mode of the biplot: "p", "a", "b", "h", "ah" and "s".
 }
   \item{CexSites}{
-%%     ~~Describe \code{CexSites} here~~
+Size for the symbols and labels of the sites. Can be a single common size for all the points or a vector with individual sizes.
 }
   \item{CexSpecies}{
-%%     ~~Describe \code{CexSpecies} here~~
+Size for the symbols and labels of the species. Can be a single common size for all the points or a vector with individual sizes.
 }
   \item{CexVar}{
-%%     ~~Describe \code{CexVar} here~~
+Size for the symbols and labels of the variables. Can be a single common size for all the points or a vector with individual sizes.
 }
   \item{ColorSites}{
-%%     ~~Describe \code{ColorSites} here~~
+Color for the symbols and labels of the sites. Can be a single common color for all the points or a vector with individual colors.
 }
   \item{ColorSpecies}{
-%%     ~~Describe \code{ColorSpecies} here~~
+Color for the symbols and labels of the species. Can be a single common color for all the points or a vector with individual colors.
 }
   \item{ColorVar}{
-%%     ~~Describe \code{ColorVar} here~~
+Color for the symbols and labels of the variables. Can be a single common color for all the points or a vector with individual colors.
 }
   \item{PchSites}{
-%%     ~~Describe \code{PchSites} here~~
+Symbol for the sites points. See \code{help(points)} for details.
 }
   \item{PchSpecies}{
-%%     ~~Describe \code{PchSpecies} here~~
+Symbol for the species points. See \code{help(points)} for details.
 }
   \item{PchVar}{
-%%     ~~Describe \code{PchVar} here~~
+Symbol for the variables points. See \code{help(points)} for details.
 }
   \item{SizeQualSites}{
-%%     ~~Describe \code{SizeQualSites} here~~
+Should the size of the site points be related to their qualities of representation (predictiveness)?
 }
   \item{SizeQualSpecies}{
-%%     ~~Describe \code{SizeQualSpecies} here~~
+Should the size of the species points be related to their qualities of representation (predictiveness)?
 }
   \item{SizeQualVars}{
-%%     ~~Describe \code{SizeQualVars} here~~
+Should the size of the variables points be related to their qualities of representation (predictiveness)?
 }
   \item{ColorQualSites}{
-%%     ~~Describe \code{ColorQualSites} here~~
+Should the color of the sites points be related to their qualities of representation (predictiveness)?
 }
   \item{ColorQualSpecies}{
-%%     ~~Describe \code{ColorQualSpecies} here~~
+Should the color of the species points be related to their qualities of representation (predictiveness)?
 }
   \item{ColorQualVars}{
-%%     ~~Describe \code{ColorQualVars} here~~
+Should the color of the variables points be related to their qualities of representation (predictiveness)?
 }
   \item{SmartLabels}{
-%%     ~~Describe \code{SmartLabels} here~~
+Plot the labels in a smart way
 }
   \item{PlotTol}{
-%%     ~~Describe \code{PlotTol} here~~
+Should the tolerances be plotted
 }
   \item{...}{
-%%     ~~Describe \code{PlotTol} here~~
+Aditional graphical parameters.
 }
 }
 \details{
 Plots an Unfolding Representation
 }
 \value{
-A plot of the unfolding representation
+A plot of the unfolding representation.
 %%  If it is a LIST, use
 %%  \item{comp1 }{Description of 'comp1'}
 %%  \item{comp2 }{Description of 'comp2'}

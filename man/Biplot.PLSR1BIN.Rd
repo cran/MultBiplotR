@@ -15,6 +15,7 @@ Biplot.PLSR1BIN(plsr)
   \item{plsr}{
 An object of class PLSR1BIN.
 }
+
 }
 \details{
 Biplot for a PLSR model with a binary response

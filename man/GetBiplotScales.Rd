@@ -9,7 +9,7 @@ Calculates the scales for the variables on a linear prediction biplot
 There are several types of scales and values that can be shown on the graphical representation. See details.
 }
 \usage{
-GetBiplotScales(Biplot, nticks = 4, TypeScale = "Complete", ValuesScale = "Original")
+GetBiplotScales(Biplot, nticks = 3, TypeScale = "Complete", ValuesScale = "Original")
 }
 %- maybe also 'usage' for other objects documented here.
 \arguments{

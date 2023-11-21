@@ -7,15 +7,19 @@ plot.Binary.Logistic.Biplot <- function(x, F1 = 1, F2 = 2, ShowAxis=FALSE, margi
                                         SizeQualCols = FALSE, ColorQualRows = FALSE, ColorQualCols = FALSE, 
                                         PchRows = NULL, PchCols = NULL, PlotClus = FALSE, TypeClus = "ch", 
                                         ClustConf=1,  Significant=TRUE, alpha=0.05, Bonferroni=TRUE, 
-                                        PlotSupVars = TRUE, AbbreviateLabels = FALSE, ...) 
+                                        PlotSupVars = TRUE, AbbreviateLabels = FALSE, MainTitle =TRUE, 
+                                        Title = NULL, RemoveXYlabs=FALSE, CenterCex=1.5, ...) 
   {
+  
+  
+  if (MainTitle & is.null(Title)) Title= x$Biplot
+  if (!MainTitle) Title= ""
   
   a = x$RowCoordinates[,c(F1,F2)]
   n = dim(a)[1]
   neje = dim(a)[2]
   
   p = dim(x$ColumnParameters)[1]
-  
   # Determining what rows to plot
   if (is.null(WhatRows)) 
     WhatRows = matrix(1, n, 1)
@@ -67,7 +71,7 @@ plot.Binary.Logistic.Biplot <- function(x, F1 = 1, F2 = 2, ShowAxis=FALSE, margi
   if (is.null(RowLabels)) 
     RowLabels = rownames(x$RowCoordinates)
   
-  if (is.null(ColLabels)) 
+  if (LabelCols & is.null(ColLabels)) 
     ColLabels = rownames(x$ColumnParameters)
   
   if (AbbreviateLabels){
@@ -116,9 +120,19 @@ plot.Binary.Logistic.Biplot <- function(x, F1 = 1, F2 = 2, ShowAxis=FALSE, margi
   xrang=abs(xmax-xmin)
   yrang=abs(ymax-ymin)
   if (xmax <0 ) xmax=xmax*(-1)
-  print(c(xmin, xmax, ymin, ymax))
+  
+  if (RemoveXYlabs){
+    Xlab=""
+    Ylab=""
+  }
+  else{
+    Xlab=paste("Dimension",F1)
+    Ylab=paste("Dimension",F2)
+  }
+
   P = rbind(P, c(xmax + (xmax - xmin) * margin, ymax + (ymax - ymin) * margin), c(xmin - (xmax - xmin) * margin, ymin - (ymax - ymin) * margin))
-  plot(P[, 1], P[, 2], asp=1, xaxt = xaxt, yaxt = yaxt, cex=0, bty="n", xlab=paste("Dimension",F1), ylab=paste("Dimension",F2), main=x$Biplot, ...)
+  plot(P[, 1], P[, 2], asp=1, xaxt = xaxt, yaxt = yaxt, cex=0, bty="n", xlab=Xlab, ylab=Ylab, main=Title, ...)
+  
   
   if (ShowBox) rect(xmin, ymin, xmax, ymax)
   
@@ -139,8 +153,10 @@ plot.Binary.Logistic.Biplot <- function(x, F1 = 1, F2 = 2, ShowAxis=FALSE, margi
   if (PlotVars){
     for (i in 1:p){
       if (WhatCols[i]){
-        PlotBinaryVar(b0=x$ColumnParameters[i,1], bi1=x$ColumnParameters[i,F1+1], bi2=x$ColumnParameters[i,F2+1], xmin=xmin, xmax=xmax, ymin=ymin, ymax=ymax, 
-                      mode=Mode, Color = ColColors[i], label=ColLabels[i], tl=TickLength, CexPoint=ColCex[i])
+        PlotBinaryVar(b0=x$ColumnParameters[i,1], bi1=x$ColumnParameters[i,F1+1],
+                      bi2=x$ColumnParameters[i,F2+1], xmin=xmin, xmax=xmax, ymin=ymin, 
+                      ymax=ymax, mode=Mode, Color = ColColors[i], label=ColLabels[i], 
+                      tl=TickLength, CexPoint=ColCex[i], CenterCex=CenterCex)
       }
     }
   }
@@ -175,8 +191,8 @@ plot.Binary.Logistic.Biplot <- function(x, F1 = 1, F2 = 2, ShowAxis=FALSE, margi
   }
   
   if (PlotSupVars) 
-    plot.Supplementary.Variables(x, F1=F1, F2=F2, xmin = xmin, xmax = xmax, ymin = ymin, ymax = ymax, mode=Mode, ColorSupContVars="red")
-  
+    plot.Supplementary.Variables(x, F1=F1, F2=F2, xmin = xmin, xmax = xmax, ymin = ymin, ymax = ymax, mode=Mode, ColorSupContVars="blue")
+
 # par(op)
 }
 

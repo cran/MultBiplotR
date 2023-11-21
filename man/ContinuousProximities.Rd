@@ -20,7 +20,7 @@ Main data matrix. Distances among rows are calculated if y=NULL.
 Supplementary data matrix. If not NULL the distances among the rows of x and y are calculated 
 }
   \item{ysup}{
-%%     ~~Describe \code{ysup} here~~
+Supplementary Y data
 }
   \item{transpose}{
 Transpose rows and columns

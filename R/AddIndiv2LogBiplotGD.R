@@ -19,7 +19,7 @@ AddIndiv2LogBiplotGD <- function(LB, X, freq = matrix(1, nrow(X), 1), tolerance 
   parA=vec(A)$v
   
   
-  resbipA <- optimr(parA, fn=JLogBiplotRegA, gr=grLogBiplotRegA, method=LB$OptimMethod, X=X, B=B, lambda=LB$Penalization)
+  resbipA <- optim(parA, fn=JLogBiplotRegA, gr=grLogBiplotRegA, method=LB$OptimMethod, X=X, B=B, lambda=LB$Penalization)
   parA=resbipA$par
   A=matrix(parA,n,r)
   rownames(A)=rownames(X)

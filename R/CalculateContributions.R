@@ -11,6 +11,7 @@ CalculateContributions <- function(X, A, B){
   CumRowContributions=matrix(0,I,S)
   CumColContributions=matrix(0,J,S)
   CumFit=matrix(0,S,1)
+  
   for (i in 1:S){
     Xesp= A[,1:i] %*% t(B[,1:i])
     CumFit[i]=sum(Xesp^2)/sum(X^2)
@@ -41,7 +42,12 @@ CalculateContributions <- function(X, A, B){
   colnames(Fit)="Percentage"
   rownames(Fit)=colnames(A)
   
+  rownames(CumRowContributions)=rownames(X)
+  colnames(CumRowContributions)=colnames(A)
+  rownames(CumColContributions)=colnames(X)
+  colnames(CumColContributions)=colnames(A)
+  
   Structure=round(cor(X,A),digits=4)
-    result=list(Fit=Fit, RowContributions=RowContributions, ColContributions=ColContributions, Structure=Structure)
+    result=list(Fit=Fit, RowContributions=RowContributions, ColContributions=ColContributions, CumRowContributions=CumRowContributions*100, CumColContributions=CumColContributions*100, Structure=Structure)
   return(result)
 }

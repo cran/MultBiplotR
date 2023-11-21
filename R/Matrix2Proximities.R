@@ -2,7 +2,8 @@
 # suitable for Principal Coordinates or MDS (SMACOF)
 
 Matrix2Proximities <- function(x, TypeData="User Provided",Type=c("dissimilarity", "similarity", "products"), Coefficient="None", Transformation="None", Data=NULL){
-   if (class(x)=="dist") x=as.matrix(x)
+   clasex=class(x)
+  if (clasex=="dist") x=as.matrix(x)
   if (!is.matrix(x)) stop("The input is not a matrix")
   if (!(nrow(x)==ncol(x))) stop("The matrix must be squared")
   if (length(Type)>1) Type=Type[1]

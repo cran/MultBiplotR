@@ -27,7 +27,7 @@ The Dimension of the solution
 Initial transform for the X matrix
 }
   \item{grouping}{
-
+Factor for grouping the observations
 }
   \item{tolerance}{
 Tolerance for convergence of the algorithm
@@ -48,7 +48,7 @@ Should a constant be included in the model?
 Algorithm used in the calculations
 }
   \item{OptimMethod}{
-Optimization methods from optimr
+Optimization methods from optim
 }
 }
 \details{

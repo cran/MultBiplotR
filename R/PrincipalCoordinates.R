@@ -3,11 +3,12 @@
 # Universidad de Salamanca
 # Revisado: Noviembre/2014
 
-PrincipalCoordinates <- function (Proximities, w = NULL, dimension = 2, tolerance=0.0001, Bootstrap=FALSE, BootstrapType=c("Distances", "Products"), nB=200, ProcrustesRot=TRUE, BootstrapMethod=c("Sampling", "Permutation")) {
+PrincipalCoordinates <- function (Proximities, w = NULL, dimension = 2, method="eigen", tolerance=0.0001, Bootstrap=FALSE, BootstrapType=c("Distances", "Products"), nB=200, ProcrustesRot=TRUE, BootstrapMethod=c("Sampling", "Permutation")) {
   if (length(BootstrapType) > 1) BootstrapType = BootstrapType[1] 
   if (length(BootstrapMethod) > 1) BootstrapMethod = BootstrapMethod[1] 
   r=dimension
-  if (!(class(Proximities)=="proximities")) stop("You need a proximities matrix")
+  claseP=class(Proximities)
+  if (!(claseP=="proximities")) stop("You need a proximities matrix")
   Dimnames=paste("Dim", 1:r)
   
   if (is.null(Proximities$Proximities))
@@ -28,7 +29,21 @@ PrincipalCoordinates <- function (Proximities, w = NULL, dimension = 2, toleranc
   
   B=sqrt(Dw) %*% b %*% sqrt(Dw)
 
+  if (method=="eigen"){
   solut <- svd(B)
+  }
+  else{
+    # solut=list(d=NULL,u=NULL)
+    # B1=B
+    # for (i in 1:dimension){
+    #   rv <- powerMethod(B1)
+    #   solut$d=c(solut$d,rv$value)
+    #   solut$u=cbind(solut$u,rv$vector)
+    #   B1 <- B1 - rv$value * outer(c(rv$vector), c(rv$vector))
+    # }
+  }
+    
+  
   
   Inertia = (solut$d/sum(solut$d)) * 100
   g <- diag(as.vector(1/sqrt(w))) %*% solut$u %*% diag(sqrt(solut$d))
@@ -46,7 +61,7 @@ PrincipalCoordinates <- function (Proximities, w = NULL, dimension = 2, toleranc
   Proximities$RowCoordinates = g[,1:r]
   colnames(Proximities$RowCoordinates)=Dimnames
   Proximities$RowQualities = qlr
-  
+
   if (!is.null(Proximities$SupProximities)) {
     t=dim(Proximities$SupProximities)
     SupCoord=0.5* ((matrix(1,t,1) %*% matrix(diag(b),1,n)) - Proximities$SupProximities^2) %*% g %*% diag(solut$d^(-1))
@@ -62,7 +77,7 @@ PrincipalCoordinates <- function (Proximities, w = NULL, dimension = 2, toleranc
   }
   
   Dh= as.dist(dis)
-  D=as.dist(EuclideanDistance( Proximities$RowCoordinates))
+  D=as.dist(EuclideanDistance(Proximities$RowCoordinates))
   stress=sum(((D-Dh)^2))
   scresid=sum((((D-Dh)^2)))
   scdis=sum((((D)^2)))
@@ -76,7 +91,7 @@ PrincipalCoordinates <- function (Proximities, w = NULL, dimension = 2, toleranc
   Proximities$sstress2=sqrt(sum(((D^2-Dh^2)^2))/sum(((D^2-dmean2)^2)))
   Proximities$rsq=cor(Dh,D)^2
   Proximities$rho=cor(Dh,D,method="spearman")
-  Proximities$tau=cor(Dh,D,method="kendall")
+  #Proximities$tau=cor(Dh,D,method="kendall")
   
   if (Bootstrap){
     if (BootstrapType=="Distances") Proximities$BootstrapInfo=BootstrapDistance(dis, W=diag(nrow(dis)), nB=nB, dimsol=dimension, ProcrustesRot=ProcrustesRot, method=BootstrapMethod)

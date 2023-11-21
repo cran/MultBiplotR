@@ -13,7 +13,7 @@ Summary of the solution of a Canonical Biplot Analysis
 %- maybe also 'usage' for other objects documented here.
 \arguments{
   \item{object}{
-%%     ~~Describe \code{Bip} here~~
+The result of a Canonical Biplot
 }
   \item{...}{
 Aditional arguments

@@ -47,9 +47,9 @@ Demey J, Vicente-Villardon JL, Galindo MP, Zambrano A (2008) Identifying molecul
 
 Vicente-Villardon JL, Galindo MP, Blazquez-Zaballos A (2006) Logistic biplots. Multiple Correspondence Analysis and related methods pp 491-509.
 
-Santos, C., Munoz, S. S., Gutierrez, Y., Hebrero, E., Vicente, J. L., Galindo, P., \& Rivas, J. C. (1991). Characterization of young red wines by application of HJ biplot analysis to anthocyanin profiles. Journal of Agricultural and food chemistry, 39(6), 1086-1090.
+Santos, C., Munoz, S. S., Gutierrez, Y., Hebrero, E., Vicente, J. L., Galindo, P., Rivas, J. C. (1991). Characterization of young red wines by application of HJ biplot analysis to anthocyanin profiles. Journal of Agricultural and food chemistry, 39(6), 1086-1090.
 
-Rivas-Gonzalo, J. C., Gutierrez, Y., Polanco, A. M., Hebrero, E., Vicente, J. L., Galindo, P., \& Santos-Buelga, C. (1993). Biplot analysis applied to enological parameters in the geographical classification of young red wines. American journal of enology and viticulture, 44(3), 302-308.
+Rivas-Gonzalo, J. C., Gutierrez, Y., Polanco, A. M., Hebrero, E., Vicente, J. L., Galindo, P., Santos-Buelga, C. (1993). Biplot analysis applied to enological parameters in the geographical classification of young red wines. American journal of enology and viticulture, 44(3), 302-308.
 }
 
 \keyword{ package }

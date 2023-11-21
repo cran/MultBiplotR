@@ -1,4 +1,4 @@
-GetBiplotScales <- function(Biplot, nticks = 4, TypeScale = "Complete", ValuesScale = "Original") {
+GetBiplotScales <- function(Biplot, nticks = 3, TypeScale = "Complete", ValuesScale = "Original") {
   # TypeScale = c("Complete", "StdDev", "BoxPlot")
   # ValuesScale = c("Original", "Transformed")
   # OptimalScales

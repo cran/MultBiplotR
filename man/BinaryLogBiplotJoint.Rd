@@ -42,7 +42,7 @@ Naximum condition number
 Should a Varimax Rotation be used?
 }
   \item{lambda}{
-%%     ~~Describe \code{lambda} here~~
+Penalization argument
 }
   \item{\dots}{
 Aditional arguments

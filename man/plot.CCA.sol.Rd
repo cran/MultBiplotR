@@ -25,112 +25,112 @@ Plots the solution of a Canonical Correspondence Analysisis using similar parame
 %- maybe also 'usage' for other objects documented here.
 \arguments{
   \item{x}{
-%%     ~~Describe \code{CCA.sol} here~~
+The results of a CCA model
 }
   \item{A1}{
-%%     ~~Describe \code{A1} here~~
+Dimension for the first axis
 }
   \item{A2}{
-%%     ~~Describe \code{A2} here~~
+Dimension for the second axis
 }
   \item{ShowAxis}{
-%%     ~~Describe \code{ShowAxis} here~~
+Logical variable to control if the coordinate axes should appear in the plot. The default value is FALSE because for most of the biplots its presence is irrelevant.
 }
   \item{margin}{
-%%     ~~Describe \code{margin} here~~
+Margin for the labels in some of the biplot modes (percentage of the plot width). Default is 0. Increase the value if the labels are not completely plotted.
 }
   \item{PlotSites}{
-%%     ~~Describe \code{PlotSites} here~~
+Should the sites be plotted?
 }
   \item{PlotSpecies}{
-%%     ~~Describe \code{PlotSpecies} here~~
+Should the species be plotted?
 }
   \item{PlotEnv}{
-%%     ~~Describe \code{PlotEnv} here~~
+Should the environmental variables be plotted?
 }
   \item{LabelSites}{
-%%     ~~Describe \code{LabelSites} here~~
+Labels for the sites
 }
   \item{LabelSpecies}{
-%%     ~~Describe \code{LabelSpecies} here~~
+Labels for the species
 }
   \item{LabelEnv}{
-%%     ~~Describe \code{LabelEnv} here~~
+Labels for the environmental variables.
 }
   \item{TypeSites}{
-%%     ~~Describe \code{TypeSites} here~~
+Type for the sites plot
 }
   \item{SpeciesQuality}{
-%%     ~~Describe \code{SpeciesQuality} here~~
+Quality for the species
 }
   \item{MinQualityVars}{
-%%     ~~Describe \code{MinQualityVars} here~~
+Minimum quality to plot a variable
 }
   \item{dp}{
-%%     ~~Describe \code{dp} here~~
+A set of indices with the variables that will show the projections of the individuals.
 }
   \item{pr}{
-%%     ~~Describe \code{pr} here~~
+A set of indices with the individuals to show the projections on the variables.
 }
   \item{PlotAxis}{
-%%     ~~Describe \code{PlotAxis} here~~
+Should the axis be plotted?
 }
   \item{TypeScale}{
-%%     ~~Describe \code{TypeScale} here~~
+Type of scale to use : "Complete", "StdDev" or "BoxPlot"
 }
   \item{ValuesScale}{
-%%     ~~Describe \code{ValuesScale} here~~
+Values to show on the scale: "Original" or "Transformed"
 }
   \item{mode}{
-%%     ~~Describe \code{mode} here~~
+Mode of the biplot: "p", "a", "b", "h", "ah" and "s".
 }
   \item{CexSites}{
-%%     ~~Describe \code{CexSites} here~~
+Size for the symbols and labels of the sites. Can be a single common size for all the points or a vector with individual sizes.
 }
   \item{CexSpecies}{
-%%     ~~Describe \code{CexSpecies} here~~
+Size for the symbols and labels of the species. Can be a single common size for all the points or a vector with individual sizes.
 }
   \item{CexVar}{
-%%     ~~Describe \code{CexVar} here~~
+Size for the symbols and labels of the variables. Can be a single common size for all the points or a vector with individual sizes.
 }
   \item{ColorSites}{
-%%     ~~Describe \code{ColorSites} here~~
+Color for the symbols and labels of the sites. Can be a single common color for all the points or a vector with individual colors.
 }
   \item{ColorSpecies}{
-%%     ~~Describe \code{ColorSpecies} here~~
+Color for the symbols and labels of the species. Can be a single common color for all the points or a vector with individual colors.
 }
   \item{ColorVar}{
-%%     ~~Describe \code{ColorVar} here~~
+Color for the symbols and labels of the variables. Can be a single common color for all the points or a vector with individual colors.
 }
   \item{PchSites}{
-%%     ~~Describe \code{PchSites} here~~
+Symbol for the sites points. See \code{help(points)} for details.
 }
   \item{PchSpecies}{
-%%     ~~Describe \code{PchSpecies} here~~
+Symbol for the species points. See \code{help(points)} for details.
 }
   \item{PchVar}{
-%%     ~~Describe \code{PchVar} here~~
+Symbol for the variables points. See \code{help(points)} for details.
 }
   \item{SizeQualSites}{
-%%     ~~Describe \code{SizeQualSites} here~~
+Should the size of the site points be related to their qualities of representation (predictiveness)?
 }
   \item{SizeQualSpecies}{
-%%     ~~Describe \code{SizeQualSpecies} here~~
+Should the size of the species points be related to their qualities of representation (predictiveness)?
 }
   \item{SizeQualVars}{
-%%     ~~Describe \code{SizeQualVars} here~~
+Should the size of the variables points be related to their qualities of representation (predictiveness)?
 }
   \item{ColorQualSites}{
-%%     ~~Describe \code{ColorQualSites} here~~
+Should the color of the sites points be related to their qualities of representation (predictiveness)?
 }
   \item{ColorQualSpecies}{
-%%     ~~Describe \code{ColorQualSpecies} here~~
+Should the color of the species points be related to their qualities of representation (predictiveness)?
 }
   \item{ColorQualVars}{
-%%     ~~Describe \code{ColorQualVars} here~~
+Should the color of the variables points be related to their qualities of representation (predictiveness)?
 }
   \item{SmartLabels}{
-%%     ~~Describe \code{SmartLabels} here~~
+Plot the labels in a smart way
 }
   \item{...}{
 Aditional graphical parameters.

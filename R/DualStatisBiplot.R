@@ -22,6 +22,9 @@ DualStatisBiplot <- function(X, InitTransform = "Standardize columns", dimens=2,
     if (sum(nri == nr) < ng) 
       stop("The number of individuals can not be the same in all ocassions (use SameInd=FALSE)")
   }
+  else{
+    nr=sum(nri)
+  }
   #  Extracting the names of the occasions
   OccNames=names(X)
   if (is.null(OccNames)) {
@@ -43,9 +46,9 @@ DualStatisBiplot <- function(X, InitTransform = "Standardize columns", dimens=2,
   StatisRes$NTables=ng
   StatisRes$NCols=nc
   if (SameInd)
-    StatisRes$NRows=nr
+    {StatisRes$NRows=nr}
   else
-    StatisRes$NRows=nri
+    {StatisRes$NRows=nri}
   
   StatisRes$VarLabels=colnames(X[[1]])
   StatisRes$TableLabels=names(X)

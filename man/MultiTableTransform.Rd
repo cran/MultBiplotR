@@ -8,7 +8,8 @@ Initial Transformation of a multi table object
 Initial Transformation of a multi table object
 }
 \usage{
-MultiTableTransform(X, InitTransform = "Standardize columns", dual = FALSE)
+MultiTableTransform(X, InitTransform = "Standardize columns", dual = FALSE,
+CommonSD = TRUE)
 }
 %- maybe also 'usage' for other objects documented here.
 \arguments{
@@ -20,6 +21,9 @@ Initial Transformattion
 }
   \item{dual}{
 Is the transformation for the dual versions?
+}
+  \item{CommonSD}{
+Should a common standard deviation be used for all the groups?
 }
 }
 \details{

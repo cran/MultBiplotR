@@ -13,7 +13,7 @@ scores.CCA.sol(CCA.sol)
 %- maybe also 'usage' for other objects documented here.
 \arguments{
   \item{CCA.sol}{
-%%     ~~Describe \code{CCA.sol} here~~
+The results of a CCA model
 }
 }
 \details{

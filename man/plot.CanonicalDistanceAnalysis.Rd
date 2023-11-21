@@ -127,7 +127,7 @@ Type of scale to use : "Complete", "StdDev" or "BoxPlot"
 Values to show on the scale: "Original" or "Transformed"
 }
   \item{SmartLabels}{
-%%     ~~Describe \code{SmartLabels} here~~
+Plot the labels in a smart way
 }
   \item{AddLegend}{
 Should a legend be added?

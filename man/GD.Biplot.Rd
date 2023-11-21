@@ -30,7 +30,7 @@ Transformation of the raw data matrix before the calculation of the biplot.
   Constant for the ridge Penalization
 }
   \item{OptimMethod}{
-Optimization method passed to the \code{optimr} function. By default is CG (Conjugate Gradient).
+Optimization method passed to the \code{optim} function. By default is CG (Conjugate Gradient).
 }
   \item{Orthogonalize}{
 Should the solution be ortogonalized.
@@ -58,7 +58,7 @@ Initial Configuration
 }
 }
 \details{
-The function calculates a bilot using gradient descent methods. The function \code{optimr} is used to optimize the loss function. By default CG (Conjugate Gradient) method is used althoug other possibilities can be used.
+The function calculates a bilot using gradient descent methods. The function \code{optim} is used to optimize the loss function. By default CG (Conjugate Gradient) method is used althoug other possibilities can be used.
 }
 \value{
 An object of class "ContinuousBiplot" is returned.

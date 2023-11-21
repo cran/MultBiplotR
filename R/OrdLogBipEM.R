@@ -1,5 +1,7 @@
-OrdLogBipEM <- function (Data, freq=NULL, dim = 2, nnodes = 15, tol = 0.0001, maxiter = 100, maxiterlogist = 100,
-          penalization = 0.2, show = FALSE, initial = 1, alfa = 1, Orthogonalize=TRUE, Varimax=TRUE, ...) 
+OrdLogBipEM <- function (Data, freq=NULL, dim = 2, nnodes = 15, tol = 0.0001, 
+                         maxiter = 100, maxiterlogist = 100, penalization = 0.2, 
+                         show = FALSE, initial = 1, alfa = 1, Orthogonalize=TRUE,
+                         Varimax=TRUE, ...) 
 {
   nrow= dim(Data)[1]
   ncol= dim(Data)[2]

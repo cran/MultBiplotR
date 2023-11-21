@@ -4,12 +4,14 @@
 
 #programita para la distancia overlap primera aproximacion
 NominalDistances<-function(X,method=1,diag=FALSE,upper=FALSE,similarity=TRUE){
-  if(class(X)!="data.frame"&class(X)!="matrix"){
+  claseX=class(X)
+  if(claseX != "data.frame" & claseX !="matrix"){
     stop("X is not a valid object")
   }
   
+  clases=apply(X, 2, class)
   for (i in 1: ncol(X)){
-    if(class(X[,i])!="factor")
+    if(clases[i]!="factor")
       stop("X is not a factor")  
   }
   

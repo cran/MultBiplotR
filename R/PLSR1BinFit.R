@@ -78,12 +78,12 @@ PLSR1BinFit <- function(Y, X, S=2, tolerance=0.000005, maxiter=100, show=FALSE,
         q=fit$beta[2]
         Q=c(q0, q)
         CostBinPLS1B(q , Y=Y, U=TT, Q=Q)
-        resbipB <- optimr(q, fn=CostBinPLS1B, gr=grBinPLS1B, method=OptimMethod, Y=Y, U=TT, Q=Q)
+        resbipB <- optim(q, fn=CostBinPLS1B, gr=grBinPLS1B, method=OptimMethod, Y=Y, U=TT, Q=Q)
         q=resbipB$par
         Q=c(c0, q)
         
         grBinPLS1A(u, Y=Y, U=TT, Q=Q)
-        parA <- optimr(u, fn=CostBinPLS1A, gr=grBinPLS1A, method=OptimMethod, Y=Y, U=TT, Q=Q)
+        parA <- optim(u, fn=CostBinPLS1A, gr=grBinPLS1A, method=OptimMethod, Y=Y, U=TT, Q=Q)
         newu=matrix(parA$par, ncol=1)
         
         error=sum((u-newu)^2)

@@ -1,4 +1,4 @@
-summary.RidgeBinaryLogistic <- function(object, ...) {
+summary.RidgeBinaryLogistic <- function(object,  ...) {
   n=dim(object$x)[1]
   p=dim(object$x)[2]
   cat("\nBINARY LOGISTIC REGRESSION - with Ridge  penalization\n\n")
@@ -23,6 +23,12 @@ summary.RidgeBinaryLogistic <- function(object, ...) {
   cat("\nNagelkerke: ", object$Nagelkerke)
   cat("\nMacFaden: ", object$MacFaden)
   cat("\nCox-Snell: ", object$CoxSnell,"\n\n")
+  
+  if (object$bootstrap){
+    percent05=sapply()
+    percent95=sapply()
+  }
+  
 }
 
 
@@ -31,4 +37,5 @@ print.RidgeBinaryLogistic <- function(x, ...) {
   cat("Penalization", x$Penalization, "\n")
   cat("\n Coefficients: \n")
   print(round(x$beta,4))
+  if (x$bootstrap) cat("\n Bootstrap results are available: \n")
 }

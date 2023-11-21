@@ -26,6 +26,8 @@ AddBinVars2Biplot <- function(bip, Y, IncludeConst=TRUE, penalization=0.2, freq=
     else
       Pco$ColumnParameters[i,]=c(0,fit$beta)
     
+    rownames(Pco$ColumnParameters)=colnames(Y)
+    
     Res$Deviances[i]=fit$Dif
     Res$Dfs[i]=fit$df
     Res$pvalues[i]=fit$p
@@ -35,8 +37,6 @@ AddBinVars2Biplot <- function(bip, Y, IncludeConst=TRUE, penalization=0.2, freq=
     Res$PercentsCorrec[i]=fit$PercentCorrect
     Pco$TotalPercent=Pco$TotalPercent+sum(y==fit$Prediction)
   }
-  if (IncludeConst)
-    rownames(Pco$ColumnParameters)=colnames(Pco$Data)
   Pco$TotalPercent=Pco$TotalPercent/(n*p)
   Pco$DevianceTotal=sum(Res$Deviances)
   Pco$TotalDf=sum(Res$Dfs)

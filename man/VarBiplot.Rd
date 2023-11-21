@@ -12,8 +12,8 @@ VarBiplot(bi1, bi2, b0 = 0, xmin = -3, xmax = 3, ymin = -3, ymax
                  = 3, label = "Point", mode = "a", CexPoint = 0.8,
                  PchPoint = 1, Color = "blue", ticks = c(-3, -2.5, -2,
                  -1.5, -1, -0.5, 0.5, 1, 1.5, 2, 2.5, 3), ticklabels =
-                 round(ticks, digits = 2), tl = 0.03, ts = "Complete",
-                 Position = "Angle", AddArrow=FALSE, ...)
+                 round(ticks, digits = 2), tl = 0.04, ts = "Complete",
+                 Position = "Angle", AddArrow=FALSE, CexScale=0.8, ...)
 }
 %- maybe also 'usage' for other objects documented here.
 \arguments{
@@ -70,6 +70,9 @@ If the Position is "Angle" the label of the variable is placed using the angle o
 }
 \item{AddArrow}{
 Add an arrow to the representation of other modes of the biplot.
+}
+  \item{CexScale}{
+Sizes of the scales
 }
   \item{...}{
 Any other graphical parameters 

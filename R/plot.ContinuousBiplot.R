@@ -15,7 +15,14 @@ plot.ContinuousBiplot <- function(x, A1 = 1, A2 = 2, ShowAxis = FALSE, margin = 
                                   ClustCenters = FALSE,  UseClusterColors = TRUE, CexClustCenters=1,
                                   PlotSupVars = TRUE, SupMode="a", ShowBox=FALSE, nticks=5, NonSelectedGray=FALSE, 
                                   PlotUnitCircle=TRUE, PlotContribFA=TRUE, AddArrow=FALSE, 
-                                  ColorSupContVars=NULL, ColorSupBinVars=NULL, ColorSupOrdVars=NULL, ...){
+                                  ColorSupContVars="red", ColorSupBinVars="red", ColorSupOrdVars="red",
+                                  ModeSupContVars="a", ModeSupBinVars="a", ModeSupOrdVars="a", 
+                                  WhatSupBinVars=NULL, Title=NULL, Xlab=NULL, Ylab=NULL, add=FALSE,
+                                  PlotTrajVars=FALSE, PlotTrajInds=FALSE, LabelTraj="end", Limits=NULL,
+                                  PlotSupInds=FALSE, WhatSupInds=NULL, ColorSupInd="black", CexSupInd=0.8, PchSupInd=16,
+                                  LabelSupInd=TRUE, PredSupPoints = 0, CexScale=0.5, ...){
+  
+
   
   modes=c("p", "a", "b", "h", "ah", "s")
   if (is.numeric(mode)) 
@@ -98,11 +105,11 @@ plot.ContinuousBiplot <- function(x, A1 = 1, A2 = 2, ShowAxis = FALSE, margin = 
   
   if (is.null(ColorVar)) 
     ColorVar = rep("black", p)
+  if (length(ColorVar)==1) ColorVar = rep(ColorVar,p)
   if (SizeQualInd) 
     CexInd = cscale(qlrrows, rescale_pal())
   if (SizeQualVars) 
     CexVar = cscale(qlrcols, rescale_pal())
-  
   
   if (NonSelectedGray){
     ColorInd[which(WhatInds==0)]="gray80"
@@ -131,6 +138,7 @@ plot.ContinuousBiplot <- function(x, A1 = 1, A2 = 2, ShowAxis = FALSE, margin = 
   if ((margin < 0) | (margin > 0.3)) 
     margin = 0
   
+  
   if (PlotVars & PlotInd){
     P = rbind(A, B)
   }
@@ -140,24 +148,54 @@ plot.ContinuousBiplot <- function(x, A1 = 1, A2 = 2, ShowAxis = FALSE, margin = 
   
   if (!LabelVars) VarLabels=rep(" ", p)
   
-  xmin = min(P[, 1])
-  xmax = max(P[, 1])
-  ymin = min(P[, 2])
-  ymax = max(P[, 2])
+  if (is.null(Xlab)) Xlab=""
+  if (is.null(Ylab)) Ylab=""
+  
+  if (!is.null(Title)){
+    Xlab=paste("Dim", A1,"(",round(x$Inertia[A1], digits=1),"%)") 
+    Ylab=paste("Dim", A2,"(",round(x$Inertia[A2], digits=1),"%)") 
+  }
+  
+  if (is.null(Limits)){
+    xmin = min(P[, 1])
+    xmax = max(P[, 1])
+    ymin = min(P[, 2])
+    ymax = max(P[, 2])
+  }
+  else{
+    xmin = Limits[1]
+    xmax = Limits[2]
+    ymin = Limits[3]
+    ymax = Limits[4]
+  }
+    
+
   xrang=abs(xmax-xmin)
   yrang=abs(ymax-ymin)
   if (xmax <0 ) xmax=xmax*(-1)
   
-  P = rbind(P, c(xmax + (xmax - xmin) * margin, ymax + (ymax - ymin) * margin),c(xmin - (xmax - xmin) * margin, ymin - (ymax - ymin) * margin))
-  plot(P[, 1], P[, 2], cex = 0, asp = 1, xaxt = xaxt, yaxt = yaxt, xlab="",ylab="", bty="n", ...)
+  Xlims=c(xmin - (xmax - xmin) * margin, xmax + (xmax - xmin) * margin)
+  
+  Ylims=c(ymin - (ymax - ymin) * margin, ymax + (ymax - ymin) * margin)
+
+#P = rbind(P, c(xmax + (xmax - xmin) * margin, ymax + (ymax - ymin) * margin),c(xmin - (xmax - xmin) * margin, ymin - (ymax - ymin) * margin))
+  
+  if (!add)
+  plot(P[, 1], P[, 2], cex = 0, asp = 1, xaxt = xaxt, yaxt = yaxt, xlab="", ylab="", bty="n",
+       xlim=Xlims, ylim=Ylims, ...)
   #op=par(mai=c(0,0,0.5,0))
   #op=par(mar=c(1, 1, 1, 1) + 0.1)
   
+  if (is.null(Title)){
   if (x$Type!="LogFreqBiplot")
     title(main = paste(x$Title,"(Dim", A1,"(",round(x$Inertia[A1], digits=1),"%)-",A2,"(",round(x$Inertia[A2], digits=1),"%))")  , omi = c(0, 0, 0, 0))
   else
-    title(main = paste(x$Title,"(Dim", A1,"-",A2)  , omi = c(0, 0, 0, 0))
-    
+    title(main = paste(x$Title,"(Dim", A1,"-",A2)  , omi = c(0, 0, 0, 0))}
+  else{
+    title(main = Title, omi = c(0, 0, 0, 0))
+  }
+ 
+  title(xlab=Xlab, ylab=Ylab, line=1)
   
   if (ShowBox) rect(xmin, ymin, xmax, ymax)
   
@@ -179,17 +217,17 @@ plot.ContinuousBiplot <- function(x, A1 = 1, A2 = 2, ShowAxis = FALSE, margin = 
   
   
   if (PlotVars) {
-    
     if ((x$Type == "FA") & (PlotContribFA)) AddArrow=TRUE
-    
-    if (mode=="s")
+    if (grepl("s", mode)|grepl("i", mode))
       Scales = GetBiplotScales(x, nticks=nticks,  TypeScale = TypeScale, ValuesScale = ValuesScale)
     
   
     for (j in 1:p) 
       if (WhatVars[j]) 
-      VarBiplot(B[j, 1], B[j, 2], xmin = xmin, xmax = xmax, ymin = ymin, ymax = ymax, label = VarLabels[j], mode = mode, CexPoint = CexVar[j], Color = ColorVar[j], 
-                ticks = Scales$Ticks[[j]], ticklabels = Scales$Labels[[j]], ts = TypeScale, PchPoint = PchVar[j], AddArrow=AddArrow, ...)
+      VarBiplot(B[j, 1], B[j, 2], xmin = xmin, xmax = xmax, ymin = ymin, ymax = ymax, 
+                label = VarLabels[j], mode = mode, CexPoint = CexVar[j], Color = ColorVar[j], 
+                ticks = Scales$Ticks[[j]], ticklabels = Scales$Labels[[j]], ts = TypeScale, 
+                PchPoint = PchVar[j], AddArrow=AddArrow, CexScale=CexScale, ...)
     
     for (idp in dp)
       if ((idp > 0) & (idp < (p + 1))) {
@@ -214,21 +252,44 @@ plot.ContinuousBiplot <- function(x, A1 = 1, A2 = 2, ShowAxis = FALSE, margin = 
         }
   }
   
+  if (PlotTrajVars){
+    points(B[, 1], B[, 2], type="l", lwd=2)
+  }
   
-  
+  if (PlotTrajInds){
+    if (LabelTraj=="end") lp=p else lp=1
+    TrajInds=list()
+    for (idp in 1:n){
+      TrajInds[[idp]]=matrix(0,p,2)
+      for (j in 1:p){
+        g = B[j, ]
+        nn = (t(g) %*% g)
+        scal <- (A[idp,] %*% g)/nn[1, 1]
+        Fpr <- scal %*% t(g)
+        TrajInds[[idp]][j,]=Fpr
+      }
+      points(TrajInds[[idp]][,1], TrajInds[[idp]][,2], type="l", lwd=2, col=ColorInd[idp])
+      text(TrajInds[[idp]][lp,1], TrajInds[[idp]][lp,2], col=ColorInd[idp], 
+           label = IndLabels[idp], cex=0.7)
+    }
+  }
   
   if ((x$Type == "FA") & (PlotContribFA)){
     for (i in 1:10){
-      Circle(i/10, lty=3)
+      Circle((i/10)/x$Scale_Factor, lty=3)
       #text(i/10, 0, labels=i/10, cex=0.5)
-      text(0, i/10, labels=i/10, cex=0.5)
+      text(0, (i/10)/x$Scale_Factor, labels=i/10, cex=0.5)
       #text(-1*i/10, 0, labels=i/10, cex=0.5)
       # text(0, -1*i/10, labels=i/10, cex=0.5)
     }
   }
   
   if (PlotSupVars) 
-    plot.Supplementary.Variables(x, F1=A1, F2=A2, xmin = xmin, xmax = xmax, ymin = ymin, ymax = ymax, mode=SupMode, TypeScale=TypeScale, ColorSupContVars=ColorSupContVars, ColorSupBinVars=ColorSupBinVars, ColorSupOrdVars=ColorSupOrdVars )
+    plot.Supplementary.Variables(x, F1=A1, F2=A2, xmin = xmin, xmax = xmax, ymin = ymin, ymax = ymax, mode=SupMode, 
+                                 TypeScale=TypeScale, ColorSupContVars=ColorSupContVars, ColorSupBinVars=ColorSupBinVars, 
+                                 ColorSupOrdVars=ColorSupOrdVars, ModeSupContVars=ModeSupContVars, ModeSupBinVars=ModeSupBinVars, 
+                                 ModeSupOrdVars=ModeSupOrdVars, WhatSupBinVars=WhatSupBinVars, CexScale=CexScale)
+ 
   
   if (PlotInd) 
     for (i in 1:n)
@@ -244,9 +305,48 @@ plot.ContinuousBiplot <- function(x, A1 = 1, A2 = 2, ShowAxis = FALSE, margin = 
   else text(A[i, 1], A[i, 2], IndLabels[i], cex = CexInd[i], col = ColorInd[i], pos = LabelPos, ...)
   
   if ((x$Type == "FA") & (PlotUnitCircle)){
-    Circle(1)
+    Circle(1/x$Scale_Factor)
   }
   
+  
+  if (PlotSupInds){
+    nsi=dim(x$SupInds)[1]
+    if (is.null(WhatSupInds)) 
+      WhatSupInds = matrix(1, nsi, 1)
+    else
+      if (!CheckBinaryVector(PlotSupInds)) {
+        AllRows = matrix(0, nsi, 1)
+        AllRows[WhatSupInds]=1
+        WhatSupInds=AllRows
+      }
+    WhatSupInds=as.logical(WhatSupInds)
+    for (i in 1:nsi)
+      if (WhatSupInds[i]){
+        points(x$SupInd[i, 1], x$SupInd[i, 2], col = ColorSupInd, cex=CexSupInd, pch = PchSupInd, ...)
+      }
+    SupIndLabels=rownames(x$SupInd)
+    if (LabelSupInd)
+      for (i in 1:nsi)
+      text(x$SupInd[i, 1], x$SupInd[i, 2], SupIndLabels[i], col = ColorSupInd, cex=CexSupInd, pos = LabelPos, ...)
+    
+    if (PlotVars) {
+      for (idp in PredSupPoints)
+        if ((idp > 0) & (idp < (nsi + 1)))
+          for (j in 1:p){
+            g = B[j, ]
+            nn = (t(g) %*% g)
+            scal <- (x$SupInds[idp,] %*% g)/nn[1, 1]
+            Fpr <- scal %*% t(g)
+            nrFpr <- nrow(Fpr)
+            dlines(matrix(x$SupInds[idp,],1,2) , Fpr, color=ColorVar[j])
+          }
+    }
+  }
+  
+
+  
+    
+  (par('usr'))
   # par(op)
 }
 

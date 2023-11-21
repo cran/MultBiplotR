@@ -51,7 +51,7 @@ StatisBiplot <- function(X, InitTransform = "Standardize columns", dimens=2, Sam
   StatisRes$TableLabels=names(X)
   if (SameVar) StatisRes$VarLabels=colnames(X[[1]])
   
-  X=MultiTableTransform(X, InitTransform = InitTransform)
+  X=MultiTableTransform(X, InitTransform = InitTransform)$X
   #Calculation of the objects
   Wt = list()
   for (i in 1:ng) {

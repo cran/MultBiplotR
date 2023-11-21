@@ -26,8 +26,16 @@ Plots a biplot for continuous data.
                     PlotSupVars = TRUE, SupMode = "a", ShowBox = FALSE,
                     nticks = 5, NonSelectedGray = FALSE, PlotUnitCircle =
                     TRUE, PlotContribFA = TRUE, AddArrow = FALSE,
-                    ColorSupContVars = NULL, ColorSupBinVars = NULL,
-                    ColorSupOrdVars = NULL, ...)
+                    ColorSupContVars = "red", ColorSupBinVars = "red",
+                    ColorSupOrdVars = "red", ModeSupContVars="a", 
+                    ModeSupBinVars="a", ModeSupOrdVars="a", 
+                    WhatSupBinVars = NULL, Title = NULL, Xlab = NULL, 
+                    Ylab = NULL, add = FALSE, PlotTrajVars = FALSE, 
+                    PlotTrajInds = FALSE, LabelTraj = "end", Limits = NULL,
+                    PlotSupInds = FALSE, WhatSupInds = NULL,
+                    ColorSupInd = "black", CexSupInd = 0.8, PchSupInd =
+                   16, LabelSupInd = TRUE, PredSupPoints = 0,  CexScale =
+                    0.5, ...)
 }
 %- maybe also 'usage' for other objects documented here.
 \arguments{
@@ -191,8 +199,68 @@ Colors for the binary supplementary variables.
 \item{ColorSupOrdVars}{
 Colors for the ordinal supplementary variables.
 }
+\item{ModeSupContVars}{
+Mode for the continuous supplementary variables.
+}
+\item{ModeSupBinVars}{
+Mode for the binary supplementary variables.
+}
+\item{ModeSupOrdVars}{
+Mode for the ordinal supplementary variables.
+}
+  \item{WhatSupBinVars}{
+What supplementary binary variables should be plotted?
+}
+  \item{Title}{
+Title of the plot.
+}
+  \item{Xlab}{
+Label for the X axis
+}
+  \item{Ylab}{
+Label for the Y axis
+}
+  \item{add}{
+Should the plot be added to an existing plot?
+}
+  \item{PlotTrajVars}{
+Plot trajectories for the variables (when appropriate)?
+}
+  \item{PlotTrajInds}{
+Plot trajectories for the individuals (when appropriate)?
+}
+  \item{LabelTraj}{
+Label trajectories for the variables (when appropriate)?
+}
+  \item{Limits}{
+Limits of the axis for the plot
+}
+  \item{PlotSupInds}{
+Should the supplementary individuals be plotted?
+}
+  \item{WhatSupInds}{
+What supplementary individuals are going to be plotted
+}
+  \item{ColorSupInd}{
+Colors for the supplementary individuals
+}
+  \item{CexSupInd}{
+Sizes for the supplementary individuals
+}
+  \item{PchSupInd}{
+Symbols for the supplementary individuals
+}
+  \item{LabelSupInd}{
+Labels for the supplementary individuals
+}
+  \item{PredSupPoints}{
+Predictions for the supplementary individuals
+}
+  \item{CexScale}{
+Sizes of the scales
+}
 \item{...}{
-Any other graphical parameters 
+Any other graphical parameters.
 }
 }
 \details{

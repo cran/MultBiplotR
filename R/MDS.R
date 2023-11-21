@@ -2,7 +2,8 @@ MDS <- function(Proximities, W=NULL, Model=c("Identity", "Ratio", "Interval", "O
                nB=200, ProcrustesRot=TRUE, BootstrapMethod=c("Sampling", "Permutation"), StandardizeDisparities=FALSE, ShowIter=FALSE){
   if (length(Model)>1) Model=Model[1]
   if (length(BootstrapMethod) > 1) BootstrapMethod = BootstrapMethod[1] 
-  if (!(class(Proximities)=="proximities")) stop("You need a proximities matrix")
+  claseP=class(Proximities)
+  if (!(claseP=="proximities")) stop("You need a proximities matrix")
   Dimnames=paste("Dim", 1:dimsol)
   P=Proximities$Proximities
   n <- dim(P)[1]

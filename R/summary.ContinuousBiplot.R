@@ -3,9 +3,14 @@ summary.ContinuousBiplot <- function(object, latex=FALSE, ...) {
     cat(" ###### Biplot for Principal Components Analysis #######\n\n")
   if (object$Type=="FA")
     cat(" ###### Biplot for Factor Analysis #######\n\n")
-  if (object$Type=="HJ"){
+  if (object$Type=="HJ")
     cat(" ###### HJ - Biplot #######\n\n")
-  }
+  if (object$Type=="PLSR")
+    cat(" ###### Biplot for PLS Regression #######\n\n")
+    if (object$Type=="PLSR_BR")
+    cat(" ###### Biplot for PLS Binary Regression #######\n\n")
+  
+  
   cat("Call\n")
   print(object$call)
   cat("Type of coordinates:\n")  
@@ -40,15 +45,40 @@ summary.ContinuousBiplot <- function(object, latex=FALSE, ...) {
   print(round(object$RowContributions, digits=2))
   cat("\n Column Contributions \n")
   print(round(object$ColContributions, digits=2))
-  cat("\n\n\n Qualities of representation of the rows (Cummulative contributions) \n")
-  print(round(t(apply(object$RowContributions,1, cumsum)), digits=2))
-  cat("\n\n\n Qualities of representation of the columns (Cummulative contributions) \n")
-  print(round(t(apply(object$ColContributions,1, cumsum)), digits=2))
   
+
+  cat("\n\n\n Qualities of representation of the rows (Cummulative contributions) \n")
+  if (is.null(object$CumRowContributions))
+    print(round(t(apply(object$RowContributions,1, cumsum)), digits=2))
+  else
+    print(round(object$CumRowContributions, digits=2))
+  
+  cat("\n\n\n Qualities of representation of the columns (Cummulative contributions) \n")
+  if (is.null(object$CumColContributions))
+    print(round(t(apply(object$ColContributions,1, cumsum)), digits=2))
+  else
+    print(round(object$CumColContributions, digits=2))
+  
+  cat("\n\n\n LATEX TABLES \n\n")
   
   if (latex){
     print(xtable(pp, caption="Explained Variance"))
     print(xtable(round(object$RowContributions, digits=2), caption="Row Contributions Factor to element"))
     print(xtable(round(object$ColContributions, digits=2), caption="Column Contributions Factor to element"))
+    
+    if (is.null(object$CumRowContributions))
+      print(xtable(round(t(apply(object$RowContributions,1, cumsum)), digits=2), caption="Qualities of the rows"))
+    else
+      print(xtable(round(object$CumRowContributions, digits=2), caption="Qualities of the rows"))
+    
+    if (is.null(object$CumColContributions))
+      print(xtable(round(t(apply(object$ColContributions,1, cumsum)), digits=2), caption="Qualities of the columns"))
+    else
+      print(xtable(round(object$CumColContributions, digits=2), caption="Qualities of the columns"))
+    
   }
+  
+  if (!is.null(object$BinSupVarsBiplot)){
+    cat("\n\n\ SUPPLEMENTARY BINARY VARIABLES\n")
+    summary(object$BinSupVarsBiplot, latex=latex, ...)}
 }

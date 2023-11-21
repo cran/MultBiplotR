@@ -8,7 +8,7 @@ Classical PCA Biplot with added features.
 Classical PCA Biplot with added features.
 }
 \usage{
-PCA.Biplot(X, alpha = 1, dimension = 3, Scaling = 5, sup.rows = NULL, 
+PCA.Biplot(X, alpha = 1, dimension = 2, Scaling = 5, sup.rows = NULL, 
           sup.cols = NULL, grouping = NULL)
 }
 %- maybe also 'usage' for other objects documented here.

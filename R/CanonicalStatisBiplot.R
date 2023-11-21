@@ -15,7 +15,6 @@ CanonicalStatisBiplot <- function(X, Groups, InitTransform = "Standardize column
   else{
     stop("You must provide a factor with the groups")
   }
-  
   nst = length(X) #Number of occasions
   StudyNames=names(X)
   nri = matrix(0, nst, 1) #Number of rows in each group
@@ -56,7 +55,7 @@ CanonicalStatisBiplot <- function(X, Groups, InitTransform = "Standardize column
   else
     StatisRes$NVars=nci
   X=MultiTableTransform(X, InitTransform = InitTransform)
-  
+  X=X$X
   StatisRes$RowLabels=levels(Groups)
   StatisRes$TableLabels=names(X)
   if (SameVar) StatisRes$VarLabels=colnames(X[[1]])

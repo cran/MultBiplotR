@@ -6,7 +6,8 @@
 RidgeMultinomialLogisticRegression <- function (formula, data, penalization = 0.2, cte = TRUE, tol = 1e-04, 
           maxiter = 200, showIter = FALSE) {
   cl <- match.call()
-  if (class(formula)=="formula"){
+  clasef=class(formula)
+  if (clasef=="formula"){
     mf=model.frame(formula, data=data)
     y=model.extract(mf,"response")
     x=model.matrix(formula, data=data)

@@ -40,7 +40,7 @@ Should the final solution be rotated.
 Seed for the random numbers. Used for reproductibility.
 }
   \item{OptimMethod}{
-Optimization method used by \code{optimr}.
+Optimization method used by \code{optim}.
 }
   \item{Initial}{
 Initial configuration to start the iterations.
@@ -56,7 +56,7 @@ Aditional parameters used by the optimization function.
 }
 }
 \details{
-Fits a binary logistic biplot using gradient descent. The general function \code{optimr} is used to optimize the loss function. Conjugate gradien is used as a default although other alternatives can be USED.
+Fits a binary logistic biplot using gradient descent. The general function \code{optim} is used to optimize the loss function. Conjugate gradien is used as a default although other alternatives can be USED.
 }
 \value{
 An object of class "Binary.Logistic.Biplot".

@@ -17,7 +17,8 @@ MinQualityRows = 0, MinQualityCols = 0, dp = 0, PredPoints = 0,
 SizeQualRows = FALSE, SizeQualCols = FALSE, ColorQualRows = FALSE, 
 ColorQualCols = FALSE, PchRows = NULL, PchCols = NULL, PlotClus = FALSE, 
 TypeClus = "ch", ClustConf = 1, Significant = TRUE, alpha = 0.05, 
-Bonferroni = TRUE, PlotSupVars = TRUE, AbbreviateLabels = FALSE, ...)
+Bonferroni = TRUE, PlotSupVars = TRUE, AbbreviateLabels = FALSE, MainTitle = TRUE, Title =
+                    NULL, RemoveXYlabs = FALSE, CenterCex = 1.5,  ...)
 }
 %- maybe also 'usage' for other objects documented here.
 \arguments{
@@ -137,6 +138,18 @@ Should the Supplementary variables be plotted?
 }
   \item{AbbreviateLabels}{
 Should labels be abbreviated?
+}
+  \item{MainTitle}{
+Should the mail Title be displayed?
+}
+  \item{Title}{
+Title to display.
+}
+  \item{RemoveXYlabs}{
+Should the axis labs be removed?
+}
+  \item{CenterCex}{
+Size of the point for 0.5 probability.
 }
   \item{\dots}{
 Any other graphical parameter.

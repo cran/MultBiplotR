@@ -103,34 +103,34 @@ Should the cluster centers be plotted
 Should the cluster colors be used in the plot
 }
   \item{ShowAxis}{
-%%     ~~Describe \code{ShowAxis} here~~
+Logical variable to control if the coordinate axes should appear in the plot. The default value is FALSE because for most of the biplots its presence is irrelevant.
 }
   \item{PlotBinaryMeans}{
-%%     ~~Describe \code{PlotBinaryMeans} here~~
+Plot the mean of the presence points for each variable
 }
   \item{MinIncidence}{
-%%     ~~Describe \code{MinIncidence} here~~
+Minimum incidence to keep a variable
 }
   \item{ShowBox}{
-%%     ~~Describe \code{ShowBox} here~~
+Should a box around the poitns be plotted?
 }
   \item{ColorSupContVars}{
-%%     ~~Describe \code{ColorSupContVars} here~~
+Colors for the supplementary continuous variables
 }
   \item{ColorSupBinVars}{
-%%     ~~Describe \code{ColorSupBinVars} here~~
+Colors for the supplementary binary variables
 }
   \item{ColorSupOrdVars}{
-%%     ~~Describe \code{ColorSupOrdVars} here~~
+Colors for the supplementary ordinal variables
 }
   \item{TypeScale}{
-%%     ~~Describe \code{TypeScale} here~~
+Type of scales for the plot
 }
   \item{SupMode}{
-%%     ~~Describe \code{SupMode} here~~
+Mode of the supplementary variables
 }
   \item{PlotSupVars}{
-%%     ~~Describe \code{PlotSupVars} here~~
+Should the supplementary variables be plotted
 }
   \item{\dots}{
 Additional parameters for graphical representations

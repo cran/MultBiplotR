@@ -19,7 +19,7 @@ export(InitialTransform, Circle, diagonal, DimensionLabels, Factor2Binary, GetBi
        CategoricalDistances, logit, Convert2ThreeWay, MultiTableStatistics, MultiTableTransform, 
        plot.StatisBiplot, SeparateVarTypes, AddSupVars2Biplot, AddContVars2Biplot,
        RidgeMultinomialLogisticRegression, RidgeMultinomialLogisticFit, DataFrame2Matrix4Regression,
-       plot3dCanonicalBiplot, plot3d.ContinuousBiplot, RidgeOrdinalLogistic, OrdinalLogisticFit, 
+        RidgeOrdinalLogistic, OrdinalLogisticFit, 
        PlotOrdinalResponses, OrdVarCoordinates, summary.ContinuousBiplot, PLSR, PLSRfit, PLSR1Bin, 
        Biplot.PLSR, Biplot.PLSR1BIN, summary.PLSR, PrettyTicks, NiceNumber, FA.Biplot, 
        Unfolding, CanonicalDistanceAnalysis, plot.CanonicalDistanceAnalysis, ContinuousProximities,
@@ -33,9 +33,12 @@ export(InitialTransform, Circle, diagonal, DimensionLabels, Factor2Binary, GetBi
        Bartlett.Tests, BasicDescription, BoxPlotPanel, ConfidenceInterval, ErrorBarPlotPanel, 
        Games_Howell, HistogramPanel, Kruskal.Wallis.Tests, Levene.Tests, NormalityTests,
        ConstrainedLogisticBiplot, ConstrainedOrdinalLogisticBiplot, anova.RidgeBinaryLogistic, 
-       BinaryLogisticBiplot)
+       BinaryLogisticBiplot, BinaryLogBiplotGDRecursive, Biplot.PLSRBIN, PLSRBin, PLSRBinFit, 
+       BiplotFPCA, PolyOrdinalLogBiplot, BinaryPLSR,
+       BinaryPLSFit, Biplot.BinaryPLSR, Convert3wArray2List, ConvertList23wArray,
+       ThreeWay2FrontalSlices, TetraDualStatis, summary.TetraDualStatis, plot.TetraDualStatis, t3pcovr)
 
-    import(scales, geometry, deldir, mirt, GPArotation, optimr, rgl, xtable)
+    import(scales, geometry, deldir, mirt, GPArotation, xtable, polycor, knitr)
     importFrom(Hmisc, errbar)
     importFrom(mvtnorm, rmvnorm)
     importFrom(mvtnorm, pmvnorm)
@@ -43,9 +46,10 @@ export(InitialTransform, Circle, diagonal, DimensionLabels, Factor2Binary, GetBi
     importFrom(car, leveneTest)
     importFrom(lattice, levelplot)
     importFrom(gplots, heatmap.2)
-    importFrom(rgl, plot3d)
     importFrom(MASS, kde2d)
     importFrom(MASS, lda)
+    importFrom("ThreeWay", "permnew", "orth")
+    importFrom("psych", "principal", "fa", "tetrachoric")
     importFrom("grDevices", "chull", "cm.colors", "col2rgb", "colors",
                "dev.new", "heat.colors", "palette", "rainbow", "rgb",
                "terrain.colors", "topo.colors")
@@ -107,7 +111,6 @@ S3method(plot, PCoABootstrap)
 S3method(plot, StatisBiplot)
 S3method(summary, StatisBiplot)
 S3method(print, StatisBiplot)
-S3method(plot3d, ContinuousBiplot)
 S3method(plot, Unfolding)
 S3method(print, RidgeBinaryLogistic)
 S3method(summary, RidgeBinaryLogistic)
@@ -119,6 +122,7 @@ S3method(plot, PLSR)
 S3method(plot, BinSupVarsBiplot)
 S3method(plot, OrdSupVarsBiplot)
 S3method(plot, Supplementary.Variables)
+S3method(summary, BinSupVarsBiplot)
 
 
 

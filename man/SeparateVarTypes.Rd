@@ -44,7 +44,7 @@ Unless specified in TypeVar, numerical variables are "Continuous", factors are "
 are considered as "Binary".
 "Frequencies" and "abundances" should be specified by the user. If Typevar has length 1, all the variables are supposed to have the same type.
 
-The typeFit is a vector of characters containing the type of fit used for each variab, coded as:
+The typeFit is a vector of characters containing the type of fit used for each variable, coded as:
 
 "a" - Average (1)
 
@@ -55,7 +55,6 @@ The typeFit is a vector of characters containing the type of fit used for each v
 "g" - Gaussian (Equal tolerances) (4)
 
 "g1" - Gaussian (Different tolerances)  (5)
-
 
 Numbers rhather than characters can also be used. Unless specified numerical variables are fitted with linear regression, 
 factors with logistic biplots, frequencies with weighted averages and abundances with gaussian regression. 
@@ -77,8 +76,6 @@ Jose Luis Vicente Villardon
 }
 
 \examples{
-data(Protein)
-SepData=SeparateVarTypes(Protein)
-SepData
+# Not yet
 }
 

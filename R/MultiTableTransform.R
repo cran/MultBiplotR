@@ -1,12 +1,10 @@
-MultiTableTransform <- function(X, InitTransform="Standardize columns", dual=FALSE){
+MultiTableTransform <- function(X, InitTransform="Standardize columns", dual=FALSE, CommonSD=TRUE){
   ng = length(X) #Number of groups
-  if (!dual){
-    for (i in 1:ng){
-      X[[i]] = TransformIni(X[[i]],transform = InitTransform)}
-    return(X)
-  }
-  
-  if (dual){
+
+  # Common sd means that the standardization is made with an estimation of the common variance
+  # This is so to be able to place scales on the variables that interpretable in all groups
+
+  if (dual & CommonSD){
     Varnames=colnames(X[[1]])
     if (InitTransform=="Standardize columns"){
       nr=rep(0, ng)
@@ -27,5 +25,11 @@ MultiTableTransform <- function(X, InitTransform="Standardize columns", dual=FAL
   else
     for (i in 1:ng){
       X[[i]] = TransformIni(X[[i]],InitTransform)}
-  return(X)
+  
+  Res=list(X=X)
+  Res$Dual=dual
+  if (dual & CommonSD)
+    Res$SD=sds
+  
+  return(Res)
 }

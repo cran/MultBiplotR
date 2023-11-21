@@ -44,8 +44,8 @@ summary.Principal.Coordinates <- function(object, printdata=FALSE, printproximit
                          print("QUALITIES OF REPRESENTATION")
                          print(object$RowQualities)}
   print("--------------------------------------")
- gfit=c(object$RawStress, object$stress1, object$stress2, object$sstress1, object$sstress2, object$rsq, object$rho, object$tau)
- names(gfit)= c("RawStress",  "stress1", "stress2", "sstress1", "sstress2", "rsq", "Spearman", "Kendall" )
+ gfit=c(object$RawStress, object$stress1, object$stress2, object$sstress1, object$sstress2, object$rsq, object$rho)
+ names(gfit)= c("RawStress",  "stress1", "stress2", "sstress1", "sstress2", "rsq", "Spearman" )
  print(gfit)
  
 }

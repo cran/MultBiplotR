@@ -35,7 +35,7 @@ Maximum number of iterations.
 Penalization for the fit (ridge)
 }
   \item{show}{
-%%     ~~Describe \code{show} here~~
+Show each step ot the fit
 }
 }
 \details{

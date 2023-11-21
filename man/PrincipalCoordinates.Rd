@@ -6,8 +6,9 @@
 Principal coordinates Analysis for a matrix of proximities obtained from binary, categorical, continuous or mixed data
 }
 \usage{
-PrincipalCoordinates(Proximities, w = NULL, dimension = 2, tolerance = 1e-04, 
-Bootstrap = FALSE, BootstrapType = c("Distances", "Products"), nB = 200, 
+PrincipalCoordinates(Proximities, w = NULL, dimension = 2, 
+method = "eigen", tolerance = 1e-04, Bootstrap = FALSE, 
+BootstrapType = c("Distances", "Products"), nB = 200, 
 ProcrustesRot = TRUE, BootstrapMethod = c("Sampling", "Permutation"))
 }
 %- maybe also 'usage' for other objects documented here.
@@ -20,6 +21,10 @@ An set of weights.
 }
   \item{dimension}{
 Dimension of the solution
+}
+  \item{method}{
+Method to calculate the eigenvalues and eigenvectors. The default is the usual
+eigen function although the Power Method to calculate only tre first eigenvectors can be used.
 }
   \item{tolerance}{
 Tolerance for the eigenvalues

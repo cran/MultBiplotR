@@ -5,7 +5,8 @@
 
 WeightedPCoA <- function(Proximities, weigths = matrix(1,dim(Proximities$Proximities)[1],1), dimension = 2, tolerance=0.0001) {
   r=dimension
-  if (!(class(Proximities)=="proximities")) stop("You need a proximities matrix")
+  classP=class(Proximities)
+  if (!(classP=="proximities")) stop("You need a proximities matrix")
   Dimnames=NULL
   for (j in 1:r) Dimnames=c(Dimnames,paste("Dim",j))
   dis=Proximities$Proximities
